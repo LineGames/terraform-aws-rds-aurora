@@ -183,8 +183,8 @@ resource "aws_rds_cluster_instance" "this" {
   db_subnet_group_name                  = local.db_subnet_group_name
   engine                                = var.engine
   engine_version                        = var.engine_version
-  identifier                            = var.instances_use_identifier_prefix ? null : try(each.value.identifier, "${var.name}-${each.key}")
-  identifier_prefix                     = var.instances_use_identifier_prefix ? try(each.value.identifier_prefix, "${var.name}-${each.key}-") : null
+  identifier                            = var.instances_use_identifier_prefix ? null : try(each.value.identifier, "${var.identifier}-${each.key}")
+  identifier_prefix                     = var.instances_use_identifier_prefix ? try(each.value.identifier_prefix, "${var.identifier}-${each.key}-") : null
   instance_class                        = try(each.value.instance_class, var.instance_class)
   monitoring_interval                   = try(each.value.monitoring_interval, var.monitoring_interval)
   monitoring_role_arn                   = var.create_monitoring_role ? try(aws_iam_role.rds_enhanced_monitoring[0].arn, null) : var.monitoring_role_arn
