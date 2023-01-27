@@ -4,6 +4,12 @@ variable "name" {
   default     = ""
 }
 
+variable "identifier" {
+  description = "identifier"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)
