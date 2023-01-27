@@ -11,8 +11,8 @@ locals {
   cluster_parameter_group_name = try(coalesce(var.db_cluster_parameter_group_name, var.name), null)
   db_parameter_group_name      = try(coalesce(var.db_parameter_group_name, var.name), null)
 
-  #master_password  = local.create_cluster && var.create_random_password ? random_password.master_password[0].result : var.master_password
-  master_password  = var.master_password
+  master_password  = local.create_cluster && var.create_random_password ? random_password.master_password[0].result : var.master_password
+  #master_password  = var.master_password
   backtrack_window = (var.engine == "aurora-mysql" || var.engine == "aurora") && var.engine_mode != "serverless" ? var.backtrack_window : 0
 
   is_serverless = var.engine_mode == "serverless"
