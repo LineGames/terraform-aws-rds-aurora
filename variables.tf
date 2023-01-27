@@ -23,7 +23,7 @@ variable "tags" {
 variable "create_random_password" {
   description = "Determines whether to create random password for RDS primary cluster"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "random_password_length" {
